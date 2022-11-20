@@ -9,11 +9,11 @@ ReVanced Build APK
 
 1.Создайте новое хранилище ключей Java с помощью следующей команды
 
-    `keytool -keystore clientkeystore.jks -genkey -alias client`
+    keytool -keystore clientkeystore.jks -genkey -alias client
 
 2.Экспортируйте свой закрытый ключ с помощью следующей команды
 
-    `openssl base64 < clientkeystore.jks | tr -d '\n' | tee clientkeystore.jks.base64.txt`
+    openssl base64 < clientkeystore.jks | tr -d '\n' | tee clientkeystore.jks.base64.txt
 
 3.Перейдите в Настройки -> Секреты -> Действия.
 
