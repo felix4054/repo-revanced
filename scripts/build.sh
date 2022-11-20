@@ -13,9 +13,9 @@ VMG_VERSION="0.2.24.220220"
 # Artifacts associative array aka dictionary
 declare -A artifacts
 
-artifacts["revanced-cli.jar"]="inotia00/rvx-builder/revanced-cli revanced-cli .jar"
-artifacts["revanced-integrations.apk"]="inotia00/rvx-builder/revanced-integrations app-release-unsigned .apk"
-artifacts["revanced-patches.jar"]="inotia00/rvx-builder/revanced-patches revanced-patches .jar"
+artifacts["revanced-cli.jar"]="inotia00/revanced-cli revanced-cli-2.15.2-all .jar"
+artifacts["revanced-integrations.apk"]="inotia00/revanced-integrations app-release-unsigned .apk"
+artifacts["revanced-patches.jar"]="inotia00/revanced-patches revanced-patches-2.111.4 .jar"
 artifacts["apkeep"]="EFForg/apkeep apkeep-x86_64-unknown-linux-gnu"
 
 get_artifact_download_url () {
