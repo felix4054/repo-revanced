@@ -1,7 +1,7 @@
 #!/bin/bash
 
 revanced=no
-while getopts r flag
+while getopts m flag
 do
     case "${flag}" in
         r) revanced=yes;;
