@@ -16,6 +16,7 @@ ReVanced Build APK
     `openssl base64 < clientkeystore.jks | tr -d '\n' | tee clientkeystore.jks.base64.txt`
 
 3.Перейдите в Настройки -> Секреты -> Действия.
+
 4.Создайте следующие секреты:
 
     -`SIGNING_KEY: содержимое файла clientkeystore.jks.base64.txt`
