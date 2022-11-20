@@ -19,10 +19,10 @@ ReVanced Build APK
 
 4.Создайте следующие секреты:
 
-    -`SIGNING_KEY: содержимое файла clientkeystore.jks.base64.txt`
+    - SIGNING_KEY: содержимое файла clientkeystore.jks.base64.txt
     
-    -`ALIAS: псевдоним, указанный ранее с параметром -alias`
+    - ALIAS: псевдоним, указанный ранее с параметром -alias
     
-    -`KEY_STORE_PASSWORD: пароль хранилища ключей, который вы ввели ранее`
+    - KEY_STORE_PASSWORD: пароль хранилища ключей, который вы ввели ранее
     
-    -`KEY_PASSWORD: пароль ключа, который вы ввели ранее`
+    - KEY_PASSWORD: пароль ключа, который вы ввели ранее
