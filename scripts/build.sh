@@ -15,7 +15,7 @@ declare -A artifacts
 
 artifacts["revanced-cli.jar"]="revanced/revanced-cli revanced-cli .jar"
 artifacts["revanced-integrations.apk"]="revanced/revanced-integrations app-release-unsigned .apk"
-artifacts["revanced-patches-2.114.0.jar"]="revanced/revanced-patches revanced-patches-2.114.0 .jar"
+artifacts["revanced-patches.jar"]="LeddaZ/revanced-patches revanced-patches .jar"
 artifacts["apkeep"]="EFForg/apkeep apkeep-x86_64-unknown-linux-gnu"
 
 get_artifact_download_url () {
@@ -57,7 +57,7 @@ if [ "$revanced" = 'yes' ]; then
     yt_excluded_patches="-e background-play -e codecs-unlock -e compact-header -e custom-music-branding -e exclusive-audio-playback -e hide-get-premium -e minimized-playback-music -e music-microg-support -e music-video-ads -e premium-heading -e tasteBuilder-remover -e upgrade-button-remover"
 
     if [ -f "youtube.apk" ]; then
-        java -jar revanced-cli.jar -m revanced-integrations.apk -b revanced-patches-2.114.0.jar \
+        java -jar revanced-cli.jar -m revanced-integrations.apk -b revanced-patches.jar \
                                 $yt_excluded_patches \
                                 -a youtube.apk -o build/revanced-nonroot.apk
         echo "YouTube ReVanced build finished"
