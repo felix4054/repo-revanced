@@ -8,7 +8,7 @@ do
     esac
 done
 
-YT_VERSION="17-43-36"
+YT_VERSION="17-44-34"
 
 declare -A apks
 
