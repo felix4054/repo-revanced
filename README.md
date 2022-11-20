@@ -9,7 +9,7 @@ ReVanced Build APK
 
 1.Создайте новое хранилище ключей Java с помощью следующей команды
 
-    keytool -storepasswd -keystore revancedKeystore.jks -genkey -keyalg RSA -alias revanced
+    keytool -keystore revancedKeystore.jks -genkey -keyalg RSA -alias revanced
 
 2.Экспортируйте свой закрытый ключ с помощью следующей команды
 
