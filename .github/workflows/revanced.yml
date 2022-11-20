@@ -3,10 +3,6 @@ name: ReVanced
 on:
   workflow_dispatch:
 
-before_install:
-  - chmod +x ./scripts/build.sh
-  - chmod +x ./scripts/download.sh
-
 jobs:
   build:
     runs-on: ubuntu-latest
