@@ -44,19 +44,18 @@ if [ "$revanced" = 'yes' ]; then
     fi
 fi
 
+echo "***************************************"
+echo "*    Building YouTube ReVanced APK    *"
+echo "***************************************"
+
 mkdir -p build
 
 # A list of available patches and their descriptions can be found here:
-# https://github.com/LeddaZ/revanced-patches
 
 if [ "$revanced" = 'yes' ]; then
-    echo "************************************"
-    echo "*    Building YouTube ReVanced     *"
-    echo "************************************"
-
     yt_excluded_patches="-i premium-heading -i amoled -i materialyou -i custom-package-name -e custom-branding-name -e custom-branding-icon-red -i custom-branding-icon-blue -e custom-branding-icon-revancify"
-
     if [ -f "youtube.apk" ]; then
+        echo "Building Non-root APK"
         java -jar revanced-cli.jar -m revanced-integrations.apk -b revanced-patches.jar \
                                 $yt_excluded_patches \
                                 -a youtube.apk -o build/revanced-nonroot.apk
