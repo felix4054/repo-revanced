@@ -46,8 +46,11 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           
-      - name: SAve Changelog
+      - name: Save state
         run: echo "{name}={value}" >> $GITHUB_STATE
+
+      - name: Set output
+        run: echo "{name}={value}" >> $GITHUB_OUTPUT
       
       - uses: marvinpinto/action-automatic-releases@latest
         name: Release ReVanced
