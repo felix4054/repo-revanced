@@ -43,9 +43,11 @@ jobs:
       - name: Build Changelog
         id: changelog
         uses: ardalanamini/auto-changelog@v2
-        run: echo "{name}={value}" >> $GITHUB_STATE
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
+          
+      - name: SAve Changelog
+        run: echo "{name}={value}" >> $GITHUB_STATE
       
       - uses: marvinpinto/action-automatic-releases@latest
         name: Release ReVanced
