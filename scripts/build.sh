@@ -8,7 +8,7 @@ do
     esac
 done
 
-VMG_VERSION="0.2.25.224113"
+VMG_VERSION="0.2.24.220220"
 
 # Artifacts associative array aka dictionary
 declare -A artifacts
