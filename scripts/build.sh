@@ -94,9 +94,17 @@ if [ -f "com.google.android.youtube.apk" ]; then
     java -jar revanced-cli.jar -m revanced-integrations.apk -b revanced-patches.jar \
         ${patches[@]} \
         -a com.google.android.youtube.apk -o build/revanced-nonroot.apk
-        
+     
+    echo "***************************************"
+    echo "*         Rename APK file             *"
+    echo "***************************************"
     mv build/revanced-nonroot-signed.apk build/revanced-nonroot-release.apk
+    
+    echo "*************************************************************"
+    echo "*  Generate SHA256 checksums for the signed APK file        *"
+    echo "*************************************************************"
     sha256sum build/revanced-nonroot-release.apk > build/SHA-256-yt.txt
+    
 else
     echo "Cannot find YouTube APK, skipping build"
 fi
