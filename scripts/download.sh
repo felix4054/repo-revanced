@@ -52,7 +52,7 @@ dl_apk() {
 
 # }
 
-Downloading youtube
+# Downloading youtube
 dl_yt() {
 	echo "Downloading YouTube"
 	local last_ver
@@ -70,7 +70,7 @@ dl_yt() {
 	fi
 }
 
-## Main
+# Main
 
 for apk in "${!apks[@]}"; do
     if [ ! -f $apk ]; then
