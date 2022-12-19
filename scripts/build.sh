@@ -88,7 +88,6 @@ if [ -f "com.google.android.youtube.apk" ]; then
     echo "Building Non-root APK"
     java -jar revanced-cli.jar -m revanced-integrations.apk -b revanced-patches.jar \
         ${patches[@]} \
-#         $EXPERIMENTAL \
         -a com.google.android.youtube.apk -o build/revanced-nonroot.apk
 else
     echo "Cannot find YouTube APK, skipping build"
