@@ -2,6 +2,8 @@
 
 declare -A apks
 
+YT_VERSION="17-45-36"
+
 apks["com.google.android.youtube.apk"]=dl_yt
 
 ## Functions
@@ -34,23 +36,42 @@ dl_apk() {
 	req "$url" "$output"
 }
 
-# Downloading youtube
+# Download YouTube
 dl_yt() {
-	echo "Downloading YouTube"
-	local last_ver
-	last_ver="$version"
-	last_ver="${last_ver:-$(get_apk_vers "https://www.apkmirror.com/uploads/?appcategory=youtube" | get_largest_ver)}"
+	if [ "$revanced" = 'yes' ]; then
+		echo "Downloading YouTube..."
 
-	echo "Choosing version '${last_ver}'"
-	local base_apk="com.google.android.youtube.apk"
-	if [ ! -f "$base_apk" ]; then
-		declare -r dl_url=$(dl_apk "https://www.apkmirror.com/apk/google-inc/youtube/youtube-${last_ver//./-}-release/" \
-			"APK</span>[^@]*@\([^#]*\)" \
-			"$base_apk")
-		echo "YouTube version: ${last_ver}"
-		echo "downloaded from: [APKMirror - YouTube]($dl_url)"
+		local base_apk="com.google.android.youtube.apk"
+		if [ ! -f "$base_apk" ]; then
+			declare -r dl_url=$(dl_apk "https://www.apkmirror.com/apk/google-inc/youtube/youtube-${YT_VERSION}-release/" \
+				"APK</span>[^@]*@\([^#]*\)" \
+				"$base_apk")
+			echo "YouTube version: ${last_ver}"
+			echo "downloaded from: [APKMirror - YouTube]($dl_url)"
+			
+		fi
+	else
+		echo "Skipping YouTube..."
 	fi
 }
+
+# Downloading youtube
+# dl_yt() {
+# 	echo "Downloading YouTube"
+# 	local last_ver
+# 	last_ver="$version"
+# 	last_ver="${last_ver:-$(get_apk_vers "https://www.apkmirror.com/uploads/?appcategory=youtube" | get_largest_ver)}"
+
+# 	echo "Choosing version '${last_ver}'"
+# 	local base_apk="com.google.android.youtube.apk"
+# 	if [ ! -f "$base_apk" ]; then
+# 		declare -r dl_url=$(dl_apk "https://www.apkmirror.com/apk/google-inc/youtube/youtube-${last_ver//./-}-release/" \
+# 			"APK</span>[^@]*@\([^#]*\)" \
+# 			"$base_apk")
+# 		echo "YouTube version: ${last_ver}"
+# 		echo "downloaded from: [APKMirror - YouTube]($dl_url)"
+# 	fi
+# }
 
 ## Main
 
