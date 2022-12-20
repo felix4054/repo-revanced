@@ -1,5 +1,16 @@
 #!/usr/bin/env bash
 
+RED='\033[0;31m'
+YELLOW='\033[1;33m'
+BLUE='\033[0;34m'
+CYAN='\033[0;36m'
+NC='\033[0m'
+
+out() {
+	# print a message
+	printf '%b\n' "$@"
+}
+
 declare -A apks
 
 
@@ -54,7 +65,8 @@ dl_apk() {
 
 # Downloading youtube
 dl_yt() {
-	echo "Downloading YouTube"
+	out "${BLUE}Downloading YouTube"
+# 	echo "Downloading YouTube"
 	local last_ver
 	last_ver="$version"
 	last_ver="${last_ver:-$(get_apk_vers "https://www.apkmirror.com/uploads/?appcategory=youtube" | get_largest_ver)}"
@@ -74,7 +86,8 @@ dl_yt() {
 
 for apk in "${!apks[@]}"; do
     if [ ! -f $apk ]; then
-        echo "Downloading $apk"
+    	out "${BLUE}Downloading $apk"
+#         echo "Downloading $apk"
         version=$(jq -r ".\"$apk\"" <versions.json)
         ${apks[$apk]}
     fi
