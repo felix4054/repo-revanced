@@ -2,7 +2,7 @@
 ReVanced Build APK
 
 ## Последние поддерживаемые версия
-YouTube: 17.45.36
+- YouTube: 17.45.36
 
 
 Этот репозиторий позволит вам создавать ReVanced YouTube без полномочий root с помощью GitHub Actions. Это поможет людям, которые не хотят настраивать среду сборки на своих машинах.
@@ -10,17 +10,17 @@ YouTube: 17.45.36
 ### Как настроить подпись сборки
 Вам понадобится Java Development Kit (JDK), OpenSSL и Linux.
 
-1.Создайте новое хранилище ключей Java с помощью следующей команды
+1. Создайте новое хранилище ключей Java с помощью следующей команды
 
     keytool -keystore revancedKeystore.jks -genkey -keyalg RSA -alias revanced
 
-2.Экспортируйте свой закрытый ключ с помощью следующей команды
+2. Экспортируйте свой закрытый ключ с помощью следующей команды
 
     openssl base64 < revancedKeystore.jks | tr -d '\n' | tee revancedKeystore.jks.base64.txt
 
-3.Перейдите в Настройки -> Секреты -> Действия(Settings -> Secrets -> Actions).
+3. Перейдите в Настройки -> Секреты -> Действия(Settings -> Secrets -> Actions).
 
-4.Создайте следующие секреты:
+4. Создайте следующие секреты:
 
     - SIGNING_KEY: вставить содержимое файла clientkeystore.jks.base64.txt
     
