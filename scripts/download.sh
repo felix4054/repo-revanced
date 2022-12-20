@@ -60,8 +60,8 @@ dl_yt() {
 		declare -r dl_url=$(dl_apk "https://www.apkmirror.com/apk/google-inc/youtube/youtube-${last_ver//./-}-release/" \
 			"APK</span>[^@]*@\([^#]*\)" \
 			"$base_apk")
-		out "${YELLOW}YouTube version: ${last_ver}"
-		out "${YELLOW}downloaded from: [APKMirror - YouTube]($dl_url)"
+		out "${YELLOW}YouTube version: ${last_ver}${NC}"
+		out "${YELLOW}downloaded from: [APKMirror - YouTube]($dl_url)${NC}"
 	fi
 }
 
@@ -69,7 +69,7 @@ dl_yt() {
 
 for apk in "${!apks[@]}"; do
     if [ ! -f $apk ]; then
-    	out "${YELLOW}Downloading $apk"
+    	out "${YELLOW}Downloading $apk${NC}"
         version=$(jq -r ".\"$apk\"" <versions.json)
         ${apks[$apk]}
     fi
