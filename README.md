@@ -2,7 +2,7 @@
 ReVanced Build APK
 
 ## Последняя поддерживаемая версия
-- YouTube: 17.45.36 - версия сборки от ([inotia00](https://github.com/inotia00/rvx-builder/tree/revanced-extended)) ([Example](images/workflow_run.png))
+- YouTube: 17.45.36 - версия сборки от ([inotia00](https://github.com/inotia00/rvx-builder/tree/revanced-extended))
 
 
 Этот репозиторий позволит вам создавать ReVanced YouTube без полномочий root с помощью GitHub Actions. Это поможет людям, которые не хотят настраивать среду сборки на своих машинах.
