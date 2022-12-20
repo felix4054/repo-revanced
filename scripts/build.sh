@@ -1,5 +1,17 @@
 #!/bin/bash
 
+RED='\033[0;31m'
+YELLOW='\033[1;33m'
+BLUE='\033[0;34m'
+CYAN='\033[0;36m'
+NC='\033[0m'
+
+out() {
+	# print a message
+	printf '%b\n' "$@"
+}
+
+
 VMG_VERSION="0.2.24.220220"
 
 # File containing all patches
@@ -63,7 +75,7 @@ fi
 # Fetch all the dependencies
 for artifact in "${!artifacts[@]}"; do
     if [ ! -f $artifact ]; then
-        echo "Downloading $artifact"
+        out "${YELLOW}Downloading $artifact${NC}"
         curl -L -o $artifact $(get_artifact_download_url ${artifacts[$artifact]})
     fi
 done
@@ -73,7 +85,7 @@ chmod +x apkeep
 
 
 if [ ! -f "vanced-microG.apk" ]; then
-    echo "Downloading Vanced microG"
+    out "${YELLOW}Downloading Vanced microG"
     ./apkeep -a com.mgoogle.android.gms@$VMG_VERSION .
     mv com.mgoogle.android.gms@$VMG_VERSION.apk vanced-microG.apk
 fi
@@ -83,19 +95,19 @@ fi
 [[ ! -z "$excluded_patches" ]] && populate_patches "-e" "$excluded_patches"
 [[ ! -z "$included_patches" ]] && populate_patches "-i" "$included_patches"
 
-echo "***************************************"
-echo "*    Building YouTube ReVanced APK    *"
-echo "***************************************"
+
+out "${YELLOW}Building YouTube ReVanced APK"
 
 mkdir -p build
 
 if [ -f "com.google.android.youtube.apk" ]; then
-    echo "Building Non-root APK"
+    out "${YELLOW}Building Non-root APK"
+    
     java -jar revanced-cli.jar -m revanced-integrations.apk -b revanced-patches.jar \
         ${patches[@]} \
         -a com.google.android.youtube.apk -o build/revanced-nonroot.apk 
 else
-    echo "Cannot find YouTube APK, skipping build"
+    out "${RED}Cannot find YouTube APK, skipping build"
 fi
 
 # A list of available patches and their descriptions can be found here:
