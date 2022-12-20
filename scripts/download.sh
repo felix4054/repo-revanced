@@ -65,7 +65,7 @@ dl_apk() {
 
 # Downloading youtube
 dl_yt() {
-	out "${BLUE}Downloading YouTube"
+	out "${YELLOW}Downloading YouTube"
 # 	echo "Downloading YouTube"
 	local last_ver
 	last_ver="$version"
@@ -77,8 +77,10 @@ dl_yt() {
 		declare -r dl_url=$(dl_apk "https://www.apkmirror.com/apk/google-inc/youtube/youtube-${last_ver//./-}-release/" \
 			"APK</span>[^@]*@\([^#]*\)" \
 			"$base_apk")
-		echo "YouTube version: ${last_ver}"
-		echo "downloaded from: [APKMirror - YouTube]($dl_url)"
+		out "${YELLOW}YouTube version: ${last_ver}"
+		out "${YELLOW}downloaded from: [APKMirror - YouTube]($dl_url)"
+# 		echo "YouTube version: ${last_ver}"
+# 		echo "downloaded from: [APKMirror - YouTube]($dl_url)"
 	fi
 }
 
@@ -86,7 +88,7 @@ dl_yt() {
 
 for apk in "${!apks[@]}"; do
     if [ ! -f $apk ]; then
-    	out "${BLUE}Downloading $apk"
+    	out "${YELLOW}Downloading $apk"
 #         echo "Downloading $apk"
         version=$(jq -r ".\"$apk\"" <versions.json)
         ${apks[$apk]}
