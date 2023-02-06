@@ -12,7 +12,7 @@ out() {
 }
 
 
-VMG_VERSION="0.2.24.220220"
+VMG_VERSION="0.2.26.225014"
 
 # File containing all patches
 patch_file=./patches.txt
