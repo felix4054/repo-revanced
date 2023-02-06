@@ -38,6 +38,7 @@ declare -A artifacts
 artifacts["revanced-cli.jar"]="inotia00/revanced-cli revanced-cli .jar"
 artifacts["revanced-integrations.apk"]="inotia00/revanced-integrations app-release-unsigned .apk"
 artifacts["revanced-patches.jar"]="inotia00/revanced-patches revanced-patches .jar"
+artifacts["microg.jar"]="inotia00/VancedMicroG microg .apk"
 artifacts["apkeep"]="EFForg/apkeep apkeep-x86_64-unknown-linux-gnu"
 
 # artifacts["revanced-cli.jar"]="revanced/revanced-cli revanced-cli .jar"
@@ -64,7 +65,7 @@ populate_patches() {
 
 # cleanup to fetch new revanced on next run
 if [[ "$1" == "clean" ]]; then
-    rm -f revanced-cli.jar revanced-integrations.apk revanced-patches.jar
+    rm -f revanced-cli.jar revanced-integrations.apk revanced-patches.jar microg.apk
     exit
 fi
 
@@ -84,10 +85,16 @@ done
 chmod +x apkeep
 
 
-if [ ! -f "vanced-microG.apk" ]; then
-    out "${YELLOW}Downloading Vanced microG"
-    ./apkeep -a com.mgoogle.android.gms@$VMG_VERSION .
-    mv com.mgoogle.android.gms@$VMG_VERSION.apk vanced-microG.apk
+# if [ ! -f "vanced-microG.apk" ]; then
+#     out "${YELLOW}Downloading Vanced microG"
+#     ./apkeep -a com.mgoogle.android.gms@$VMG_VERSION .
+#     mv com.mgoogle.android.gms@$VMG_VERSION.apk vanced-microG.apk
+# fi
+
+if [ ! -f "microg.apk" ]; then
+    out "${YELLOW}Rename Vanced microG"
+#     ./apkeep -a com.mgoogle.android.gms@$VMG_VERSION .
+    mv microg.apk vanced-microG.apk
 fi
 
 
