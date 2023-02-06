@@ -91,7 +91,7 @@ chmod +x apkeep
 #     mv com.mgoogle.android.gms@$VMG_VERSION.apk vanced-microG.apk
 # fi
 
-if [ ! -f "microg.apk" ]; then
+if [ ! -f "vanced-microG.apk" ]; then
     out "${YELLOW}Rename Vanced microG"
 #     ./apkeep -a com.mgoogle.android.gms@$VMG_VERSION .
     mv microg.apk vanced-microG.apk
