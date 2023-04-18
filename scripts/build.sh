@@ -107,12 +107,12 @@ out "${YELLOW}Building YouTube ReVanced APK"
 
 mkdir -p build
 
-if [ -f "com.google.android.youtube.apk" ]; then
+if [ -f "youtube.apk" ]; then
     out "${YELLOW}Building Non-root APK"
     
     java -jar revanced-cli.jar -m revanced-integrations.apk -b revanced-patches.jar \
         ${patches[@]} \
-        -a com.google.android.youtube.apk -o build/revanced-nonroot.apk 
+        -a youtube.apk -o build/revanced-nonroot.apk 
 else
     out "${RED}Cannot find YouTube APK, skipping build"
 fi
