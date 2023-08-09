@@ -35,7 +35,7 @@ declare -a patches
 # Artifacts associative array aka dictionary
 declare -A artifacts
 
-artifacts["revanced-cli-all.jar"]="inotia00/revanced-cli revanced-cli .jar"
+artifacts["revanced-cli-all.jar"]="inotia00/revanced-cli revanced-cli-all .jar"
 artifacts["revanced-integrations.apk"]="inotia00/revanced-integrations revanced-integrations .apk"
 artifacts["revanced-patches.jar"]="inotia00/revanced-patches revanced-patches .jar"
 artifacts["microg.apk"]="inotia00/VancedMicroG microg .apk"
@@ -110,7 +110,7 @@ mkdir -p build
 if [ -f "youtube.apk" ]; then
     out "${YELLOW}Building Non-root APK"
     
-    java -jar revanced-cli.jar -m revanced-integrations.apk -b revanced-patches.jar \
+    java -jar revanced-cli-all.jar -m revanced-integrations.apk -b revanced-patches.jar \
         ${patches[@]} \
         -a youtube.apk -o build/revanced-nonroot.apk 
 else
