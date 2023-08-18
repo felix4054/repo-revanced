@@ -112,12 +112,12 @@ fi
 out "${YELLOW}Building YouTube ReVanced APK"
 
 mkdir -p build
-if [[ -z "revanced-patches.jar" ]] || [[ -z "integrations.apk" ]] || [[ -z "revanced-cli.jar" ]]; then 
+if [[ -z "revanced-patches.jar" ]] || [[ -z "revanced-integrations.apk" ]] || [[ -z "revanced-cli.jar" ]]; then 
     printf "\033[0;31mError: patches files not found\033[0m\n" 
     exit 1 
 fi
 
-for file in "revanced-cli.jar" "integrations.apk" "revanced-patches.jar" "youtube.apk"; do 
+for file in "revanced-cli.jar" "revanced-integrations.apk" "revanced-patches.jar" "youtube.apk"; do 
     printf "\033[0;36m->%s\033[0m\n" "$file" 
 done
 
@@ -125,11 +125,11 @@ if [ -f "youtube.apk" ]; then
     out "${YELLOW}Building Non-root APK"
     
     java -jar revanced-cli.jar \
-        -a youtube.apk \
-        -b revanced-patches.jar \
-        -m revanced-integrations.apk \
-        ${patches[@]} \
-        -o build/revanced-nonroot.apk 
+         -a youtube.apk \
+         -b revanced-patches.jar \
+         -m revanced-integrations.apk \
+         ${patches[@]} \
+         -o build/revanced-nonroot.apk 
 else
     out "${RED}Cannot find YouTube APK, skipping build"
 fi
