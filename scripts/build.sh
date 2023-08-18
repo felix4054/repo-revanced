@@ -41,10 +41,10 @@ declare -A artifacts
 # artifacts["microg.apk"]="inotia00/VancedMicroG microg .apk"
 # artifacts["apkeep"]="EFForg/apkeep apkeep-x86_64-unknown-linux-gnu"
 
-artifacts["revanced-cli.jar"]="revanced/revanced-cli revanced-cli -all.jar"
-artifacts["revanced-integrations.apk"]="YT-Advanced/ReX-integrations revanced-integrations .apk"
-artifacts["revanced-patches.jar"]="YT-Advanced/ReX-patches revanced-patches .jar"
-artifacts["microg.apk"]="inotia00/VancedMicroG microg .apk"
+artifacts["revanced-cli.jar"]="revanced/revanced-cli revanced-cli*-all.jar"
+artifacts["revanced-integrations.apk"]="YT-Advanced/ReX-integrations revanced-integrations*.apk"
+artifacts["revanced-patches.jar"]="YT-Advanced/ReX-patches revanced-patches*.jar"
+artifacts["microg.apk"]="inotia00/VancedMicroG microg*.apk"
 artifacts["apkeep"]="EFForg/apkeep apkeep-x86_64-unknown-linux-gnu"
 
 # artifacts["revanced-cli.jar"]="revanced/revanced-cli revanced-cli .jar"
