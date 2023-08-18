@@ -41,7 +41,7 @@ declare -A artifacts
 # artifacts["microg.apk"]="inotia00/VancedMicroG microg .apk"
 # artifacts["apkeep"]="EFForg/apkeep apkeep-x86_64-unknown-linux-gnu"
 
-artifacts["revanced-cli-all.jar"]="revanced/revanced-cli revanced-cli .jar"
+artifacts["revanced-cli.jar"]="revanced/revanced-cli revanced-cli .jar"
 artifacts["revanced-integrations.apk"]="YT-Advanced/ReX-integrations revanced-integrations .apk"
 artifacts["revanced-patches.jar"]="YT-Advanced/ReX-patches revanced-patches .jar"
 artifacts["microg.apk"]="inotia00/VancedMicroG microg .apk"
@@ -71,7 +71,7 @@ populate_patches() {
 
 # cleanup to fetch new revanced on next run
 if [[ "$1" == "clean" ]]; then
-    rm -f revanced-cli-all.jar revanced-integrations.apk revanced-patches.jar microg.apk
+    rm -f revanced-cli.jar revanced-integrations.apk revanced-patches.jar microg.apk
     exit
 fi
 
@@ -99,7 +99,7 @@ chmod +x apkeep
 
 if [ ! -f "vanced-microG.apk" ]; then
     out "${YELLOW}Rename Vanced microG"
-#     ./apkeep -a com.mgoogle.android.gms@$VMG_VERSION .
+   ./apkeep -a com.mgoogle.android.gms@$VMG_VERSION .
     mv microg.apk vanced-microG.apk
 fi
 
@@ -116,7 +116,7 @@ mkdir -p build
 if [ -f "youtube.apk" ]; then
     out "${YELLOW}Building Non-root APK"
     
-    java -jar revanced-cli-all.jar -m revanced-integrations.apk -b revanced-patches.jar \
+    java -jar revanced-cli.jar -m revanced-integrations.apk -b revanced-patches.jar \
         ${patches[@]} \
         -a youtube.apk -o build/revanced-nonroot.apk 
 else
