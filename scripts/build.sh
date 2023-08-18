@@ -112,7 +112,7 @@ fi
 out "${YELLOW}Building YouTube ReVanced APK"
 
 mkdir -p build
-patches() {
+function patch() {
 local youtube_apk=$(find -name "youtube.apk" -print -quit)
 local patches_jar=$(find -name "revanced-patches.jar" -print -quit) 
 local integrations_apk=$(find -name "revanced-integrations.apk" -print -quit) 
