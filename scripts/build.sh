@@ -112,34 +112,28 @@ fi
 out "${YELLOW}Building YouTube ReVanced APK"
 
 mkdir -p build
+if [[ -z "$patches_jar" ]] || [[ -z "$integrations_apk" ]] || [[ -z "$cli_jar" ]]; then 
+    printf "\033[0;31mError: patches files not found\033[0m\n" 
+    exit 1 
+fi
 
-patch() {
-    local youtube_apk=$(find -name "youtube.apk" -print -quit)
-    local patches_jar=$(find -name "revanced-patches.jar" -print -quit) 
-    local integrations_apk=$(find -name "revanced-integrations.apk" -print -quit) 
-    local cli_jar=$(find -name "revanced-cli.jar" -print -quit) 
-    if [[ -z "$patches_jar" ]] || [[ -z "$integrations_apk" ]] || [[ -z "$cli_jar" ]]; then 
-        printf "\033[0;31mError: patches files not found\033[0m\n" 
-        exit 1 
-    fi
-    printf "\033[1;33mRunning patch \033[0;31m\"%s\" \033[1;33mwith the following files:\033[0m\n" "$apk_out" 
-    for file in "$cli_jar" "$integrations_apk" "$patches_jar" "$base_apk"; do 
-        printf "\033[0;36m->%s\033[0m\n" "$file" 
-    done
+for file in "revanced-cli.jar" "integrations.apk" "revanced-patches.jar" "youtube.apk"; do 
+    printf "\033[0;36m->%s\033[0m\n" "$file" 
+done
 
-    if [ -f "$youtube_apk" ]; then
-        out "${YELLOW}Building Non-root APK"
+if [ -f "youtube.apk" ]; then
+    out "${YELLOW}Building Non-root APK"
     
-        java -jar revanced-cli.jar \
-            -a youtube.apk \
-	    -b revanced-patches.jar \
-            -m revanced-integrations.apk \
-            ${patches[@]} \
-            -o build/revanced-nonroot.apk 
-    else
-        out "${RED}Cannot find YouTube APK, skipping build"
-    fi
-}
+    java -jar revanced-cli.jar \
+        -a youtube.apk \
+        -b revanced-patches.jar \
+        -m revanced-integrations.apk \
+        ${patches[@]} \
+        -o build/revanced-nonroot.apk 
+else
+    out "${RED}Cannot find YouTube APK, skipping build"
+fi
+
 
 # A list of available patches and their descriptions can be found here:
 
