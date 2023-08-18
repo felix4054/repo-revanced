@@ -128,7 +128,7 @@ if [ -f "youtube.apk" ]; then
          -a youtube.apk \
          -b revanced-patches.jar \
          -m revanced-integrations.apk \
-         ${patches[@]} \
+         #${patches[@]} \
          -o build/revanced-nonroot.apk 
 else
     out "${RED}Cannot find YouTube APK, skipping build"
