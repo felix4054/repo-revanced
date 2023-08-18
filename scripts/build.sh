@@ -112,7 +112,7 @@ fi
 out "${YELLOW}Building YouTube ReVanced APK"
 
 mkdir -p build
-
+patches() {
 local youtube_apk=$(find -name "youtube.apk" -print -quit)
 local patches_jar=$(find -name "revanced-patches.jar" -print -quit) 
 local integrations_apk=$(find -name "revanced-integrations.apk" -print -quit) 
@@ -138,6 +138,7 @@ if [ -f "$youtube_apk" ]; then
 else
     out "${RED}Cannot find YouTube APK, skipping build"
 fi
+}
 
 # A list of available patches and their descriptions can be found here:
 
