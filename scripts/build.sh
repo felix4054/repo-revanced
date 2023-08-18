@@ -114,9 +114,9 @@ out "${YELLOW}Building YouTube ReVanced APK"
 mkdir -p build
 
 local youtube_apk=$(find -name "youtube.apk" -print -quit)
-local patches_jar=$(find -name "revanced-patches*.jar" -print -quit) 
-local integrations_apk=$(find -name "revanced-integrations*.apk" -print -quit) 
-local cli_jar=$(find -name "revanced-cli*.jar" -print -quit) 
+local patches_jar=$(find -name "revanced-patches.jar" -print -quit) 
+local integrations_apk=$(find -name "revanced-integrations.apk" -print -quit) 
+local cli_jar=$(find -name "revanced-cli.jar" -print -quit) 
 if [[ -z "$patches_jar" ]] || [[ -z "$integrations_apk" ]] || [[ -z "$cli_jar" ]]; then 
     printf "\033[0;31mError: patches files not found\033[0m\n" 
     exit 1 
