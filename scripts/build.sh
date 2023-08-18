@@ -44,7 +44,6 @@ declare -A artifacts
 artifacts["revanced-cli.jar"]="revanced/revanced-cli revanced-cli -all.jar"
 artifacts["revanced-integrations.apk"]="YT-Advanced/ReX-integrations revanced-integrations .apk"
 artifacts["revanced-patches.jar"]="YT-Advanced/ReX-patches revanced-patches .jar"
-artifacts["patches.json"]="YT-Advanced/ReX-patches patches.json"
 artifacts["microg.apk"]="inotia00/VancedMicroG microg .apk"
 artifacts["apkeep"]="EFForg/apkeep apkeep-x86_64-unknown-linux-gnu"
 
@@ -56,7 +55,7 @@ artifacts["apkeep"]="EFForg/apkeep apkeep-x86_64-unknown-linux-gnu"
 get_artifact_download_url () {
     # Usage: get_download_url <repo_name> <artifact_name> <file_type>
     local api_url="https://api.github.com/repos/$1/releases/latest"
-    local result=$(curl $api_url | jq -r ".assets[] | select(.name | contains(\"$2\") and contains(\"$3\") and (contains(\".sig\") | not)) | .browser_download_url")
+    local result=$(curl $api_url | jq ".assets[] | select(.name | contains(\"$2\") and contains(\"$3\") and (contains(\".sig\") | not)) | .browser_download_url")
     echo ${result:1:-1}
 }
 
