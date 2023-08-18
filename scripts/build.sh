@@ -112,7 +112,7 @@ fi
 out "${YELLOW}Building YouTube ReVanced APK"
 
 mkdir -p build
-if [[ -z "$patches_jar" ]] || [[ -z "$integrations_apk" ]] || [[ -z "$cli_jar" ]]; then 
+if [[ -z "revanced-patches.jar" ]] || [[ -z "integrations.apk" ]] || [[ -z "revanced-cli.jar" ]]; then 
     printf "\033[0;31mError: patches files not found\033[0m\n" 
     exit 1 
 fi
