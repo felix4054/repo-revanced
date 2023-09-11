@@ -5,23 +5,23 @@ on:
 
 jobs:
   build:
-    name: Patch Revanced
-    permissions: write-all
+    # name: Patch Revanced
+    permissions: write
     runs-on: ubuntu-latest
     
     steps:
-      - uses: actions/checkout@v3.5.2
-      - name: Setup JDK
+      - uses: actions/checkout@v3
+      - name: Setup Java JDK
         uses: actions/setup-java@v3.10.0
         with:
-          java-version: "11"
+          java-version: "17"
           distribution: "zulu"
 
-      - name: Download base APK
-        run: bash ./scripts/download.sh -r
+      - name: Download APKs from APKMirror
+        run:  ./scripts/download.sh -r
 
-      - name: Build APK
-        run: bash ./scripts/build.sh -r
+      - name: Build APKs
+        run:  ./scripts/build.sh 
               
       - name: Set current date as env variable
         run: echo "date_now=$(date +'%Y-%m-%d')" >> $GITHUB_ENV && echo "date_now_nodashes=$(date +'%Y%m%d')" >> $GITHUB_ENV
@@ -38,8 +38,8 @@ jobs:
         env:
           BUILD_TOOLS_VERSION: "33.0.0"   
           
-      - name: Rename APK file
-        run: ./scripts/rename-updater.sh
+      # - name: Rename APK file
+      #   run: ./scripts/rename-updater.sh
           
       - name: Generate SHA256 checksums for the signed APK file
         run: ./scripts/sha256gen.sh -r
@@ -48,10 +48,13 @@ jobs:
         name: Release ReVanced
         with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
-          automatic_release_tag: "${{ env.date_now_nodashes }}-yt"
-          title: "ReVanced ${{ env.date_now }}"
-          prerelease: false
+          # automatic_release_tag: "${{ env.date_now_nodashes }}-yt"
+          # title: "ReVanced ${{ env.date_now }}"
+          # prerelease: false
+          automatic_release_tag: "latest"
+          draft: true
+          title: "Release ${{ env.date_now }}"
           files: |
             build/SHA-256-yt.txt
-            build/revanced-nonroot-release.apk
+            build/*.apk
             vanced-microG.apk
