@@ -159,6 +159,7 @@ function build_youtube_root(){
 echo "************************************"
 echo "Building YouTube Root APK"
 echo "************************************"
+out "${YELLOW}Building Root APK"
 
 if [ -f "com.google.android.youtube.apk" ]; then
     java -jar revanced-cli.jar -m revanced-integrations.apk -b revanced-patches.jar --mount \
@@ -174,6 +175,7 @@ function build_youtube_nonroot(){
 echo "************************************"
 echo "Building YouTube Non-root APK"
 echo "************************************"
+out "${YELLOW}Building Non-root APK"
 
 if [ -f "com.google.android.youtube.apk" ]; then
     java -jar revanced-cli.jar -m revanced-integrations.apk -b revanced-patches.jar \
@@ -188,12 +190,14 @@ fi
 if [ "$YOUTUBE_ROOT" = "true" ]; then
 	build_youtube_root
 else
-	printf "\nSkipping YouTube ReVanced (root)"
+	out "${RED}Skipping YouTube ReVanced (root)"
+	# printf "\nSkipping YouTube ReVanced (root)"
 fi
 
 if [ "$YOUTUBE_NONROOT" = "true" ]; then
 	build_youtube_nonroot
 else
-	printf "\nSkipping YouTube ReVanced (nonroot)"
+	out "${RED}Skipping YouTube ReVanced (nonroot)"
+	# printf "\nSkipping YouTube ReVanced (nonroot)"
 fi
 
