@@ -133,14 +133,6 @@ out "${YELLOW}Building YouTube ReVanced APK"
 
 mkdir -p build
 
-if [[ -z "revanced-patches.jar" ]] || [[ -z "revanced-integrations.apk" ]] || [[ -z "revanced-cli.jar" ]]; then 
-    printf "\033[0;31mError: patches files not found\033[0m\n" 
-    exit 1 
-fi
-
-for file in "revanced-cli.jar" "revanced-integrations.apk" "revanced-patches.jar" "youtube.apk"; do 
-    printf "\033[0;36m->%s\033[0m\n" "$file" 
-done
 
 # if [ -f "youtube.apk" ]; then
 #     out "${YELLOW}Building Non-root APK"
@@ -156,9 +148,6 @@ done
 # fi
 
 function build_youtube_root(){
-echo "************************************"
-echo "Building YouTube Root APK"
-echo "************************************"
 out "${YELLOW}Building Root APK"
 
 if [ -f "com.google.android.youtube.apk" ]; then
@@ -172,16 +161,16 @@ fi
 }
 
 function build_youtube_nonroot(){
-echo "************************************"
-echo "Building YouTube Non-root APK"
-echo "************************************"
 out "${YELLOW}Building Non-root APK"
 
 if [ -f "com.google.android.youtube.apk" ]; then
-    java -jar revanced-cli.jar -m revanced-integrations.apk -b revanced-patches.jar \
+    java -jar revanced-cli.jar patch \
+        -m revanced-integrations.apk \
+        -b revanced-patches.jar \
         ${patches[@]} \
         $EXPERIMENTAL \
-        -a com.google.android.youtube.apk -o "build/revanced-youtube-$(cat versions.json | grep -oP '(?<="com.google.android.youtube.apk": ")[^"]*').apk"
+        -a com.google.android.youtube.apk \
+	-o "build/revanced-youtube-$(cat versions.json | grep -oP '(?<="com.google.android.youtube.apk": ")[^"]*').apk"
 else
     out "${RED}Cannot find YouTube APK, skipping build"
 fi
