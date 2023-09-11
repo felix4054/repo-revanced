@@ -55,7 +55,7 @@ dl_yt() {
 	last_ver="${last_ver:-$(get_apk_vers "https://www.apkmirror.com/uploads/?appcategory=youtube" | get_largest_ver)}"
 
 	out "${CYAN}Choosing version '${last_ver}'"
-	local base_apk="youtube.apk"
+	local base_apk="com.google.android.youtube.apk"
 	if [ ! -f "$base_apk" ]; then
 		declare -r dl_url=$(dl_apk "https://www.apkmirror.com/apk/google-inc/youtube/youtube-${last_ver//./-}-release/" \
 			"APK</span>[^@]*@\([^#]*\)" \
@@ -66,11 +66,26 @@ dl_yt() {
 }
 
 # Main
+## Main
+
+source build.targets
 
 for apk in "${!apks[@]}"; do
     if [ ! -f $apk ]; then
-    	out "${YELLOW}Downloading $apk${NC}"
+        out "${YELLOW}Downloading $apk${NC}"
+	if [ "$EXTENDED_SUPPORT" = "true" ]; then
+        version=$(jq -r ".\"$apk\"" <versions_extended.json)
+        else
         version=$(jq -r ".\"$apk\"" <versions.json)
+        fi
         ${apks[$apk]}
     fi
 done
+
+# for apk in "${!apks[@]}"; do
+#     if [ ! -f $apk ]; then
+#     	out "${YELLOW}Downloading $apk${NC}"
+#         version=$(jq -r ".\"$apk\"" <versions.json)
+#         ${apks[$apk]}
+#     fi
+# done
