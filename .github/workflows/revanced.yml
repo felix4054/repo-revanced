@@ -1,4 +1,4 @@
-name: ReVanced
+name: ReVanced Build
 
 on:
   workflow_dispatch:
