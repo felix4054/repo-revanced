@@ -185,18 +185,15 @@ else
 fi
 }
 
+if [ "$YOUTUBE_ROOT" = "true" ]; then
+	build_youtube_root
+else
+	printf "\nSkipping YouTube ReVanced (root)"
+fi
 
-
-# A list of available patches and their descriptions can be found here:
-
-# yt_excluded_patches="-i premium-heading -i amoled -i materialyou -i custom-package-name -e custom-branding-name -e custom-branding-icon-red -i custom-branding-icon-blue -e custom-branding-icon-revancify"
-# if [ -f "youtube.apk" ]; then
-#     echo "Building Non-root APK"
-#     java -jar revanced-cli.jar -m revanced-integrations.apk -b revanced-patches.jar \
-#                             $yt_excluded_patches \
-#                             -a youtube.apk -o build/revanced-nonroot.apk
-#     echo "YouTube ReVanced build finished"
-# else
-#     echo "Cannot find YouTube APK, skipping build"
-# fi
+if [ "$YOUTUBE_NONROOT" = "true" ]; then
+	build_youtube_nonroot
+else
+	printf "\nSkipping YouTube ReVanced (nonroot)"
+fi
 
