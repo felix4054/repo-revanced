@@ -3,10 +3,11 @@ name: ReVanced Build
 on:
   workflow_dispatch:
 
+permissions:
+      contents: write
+
 jobs:
   build:
-    # name: Patch Revanced
-    permissions: write
     runs-on: ubuntu-latest
     
     steps:
