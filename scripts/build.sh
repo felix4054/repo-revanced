@@ -119,10 +119,10 @@ done
 if [ -f "youtube.apk" ]; then
     out "${YELLOW}Building Non-root APK"
     
-    java -jar revanced-cli.jar patch \
+    java -jar revanced-cli.jar \
     	 -b revanced-patches.jar \
-         --moumt youtube.apk \
-         -m revanced-integrations.apk \
+      	 -m revanced-integrations.apk \
+         -a youtube.apk \
          ${patches[@]} \
          -o build/revanced-nonroot.apk 
 else
