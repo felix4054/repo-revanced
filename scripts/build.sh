@@ -120,8 +120,7 @@ if [ -f "youtube.apk" ]; then
     out "${YELLOW}Building Non-root APK"
     
     java -jar revanced-cli.jar patch \
-    	 --mount \
-      	 youtube.apk \
+    	 -a youtube.apk \
  	 -b revanced-patches.jar \
    	 -m revanced-integrations.apk \
          ${patches[@]} \
