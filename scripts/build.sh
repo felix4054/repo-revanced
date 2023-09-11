@@ -121,13 +121,10 @@ if [ -f "youtube.apk" ]; then
     
     java -jar revanced-cli.jar patch \
     	 --mount youtube.apk \
- 	 --patch-bundle revanced-patches.jar \
-   	 --merge revanced-integrations.apk \
-    	 # -a youtube.apk \
-    	 # -b revanced-patches.jar \
-         # -m revanced-integrations.apk \
+ 	 -b revanced-patches.jar \
+   	 -m revanced-integrations.apk \
          ${patches[@]} \
-         --out build/revanced-nonroot.apk 
+         -o build/revanced-nonroot.apk 
 else
     out "${RED}Cannot find YouTube APK, skipping build"
 fi
