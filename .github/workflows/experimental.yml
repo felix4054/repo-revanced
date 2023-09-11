@@ -20,10 +20,10 @@ jobs:
           distribution: "zulu"
 
       - name: Download APKs from APKMirror
-        run: ./download_apkmirror.sh
+        run:  ./scripts/download.sh -r
 
-      - name: Build APKs, force patches on untested YouTube versions
-        run: ./build_revanced.sh experimental
+      - name: Build APKs, force patches on YouTube versions
+        run: ./scripts/build.sh experimental
 
       - name: Set current date as env variable
         run: echo "date_now=$(date +'%Y-%m-%d')" >> $GITHUB_ENV
