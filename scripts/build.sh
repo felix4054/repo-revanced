@@ -35,17 +35,17 @@ declare -a patches
 # Artifacts associative array aka dictionary
 declare -A artifacts
 
-artifacts["revanced-cli.jar"]="inotia00/revanced-cli revanced-cli .jar"
-artifacts["revanced-integrations.apk"]="inotia00/revanced-integrations revanced-integrations .apk"
-artifacts["revanced-patches.jar"]="inotia00/revanced-patches revanced-patches .jar"
-artifacts["microg.apk"]="inotia00/VancedMicroG microg .apk"
+# artifacts["revanced-cli.jar"]="inotia00/revanced-cli revanced-cli .jar"
+# artifacts["revanced-integrations.apk"]="inotia00/revanced-integrations revanced-integrations .apk"
+# artifacts["revanced-patches.jar"]="inotia00/revanced-patches revanced-patches .jar"
+# artifacts["microg.apk"]="inotia00/VancedMicroG microg .apk"
 #artifacts["apkeep"]="EFForg/apkeep apkeep-x86_64-unknown-linux-gnu"
 
-#artifacts["revanced-cli.jar"]="revanced/revanced-cli revanced-cli .jar"
-#artifacts["revanced-integrations.apk"]="YT-Advanced/ReX-integrations revanced-integrations .apk"
-#artifacts["revanced-patches.jar"]="YT-Advanced/ReX-patches revanced-patches .jar"
-#artifacts["microg.apk"]="inotia00/VancedMicroG microg .apk"
-#artifacts["apkeep"]="EFForg/apkeep apkeep-x86_64-unknown-linux-gnu"
+artifacts["revanced-cli.jar"]="revanced/revanced-cli revanced-cli .jar"
+artifacts["revanced-integrations.apk"]="YT-Advanced/ReX-integrations revanced-integrations .apk"
+artifacts["revanced-patches.jar"]="YT-Advanced/ReX-patches revanced-patches .jar"
+artifacts["microg.apk"]="inotia00/VancedMicroG microg .apk"
+artifacts["apkeep"]="EFForg/apkeep apkeep-x86_64-unknown-linux-gnu"
 
 # artifacts["revanced-cli.jar"]="revanced/revanced-cli revanced-cli .jar"
 # artifacts["revanced-integrations.apk"]="revanced/revanced-integrations app-release-unsigned .apk"
@@ -120,9 +120,9 @@ if [ -f "youtube.apk" ]; then
     out "${YELLOW}Building Non-root APK"
     
     java -jar revanced-cli.jar \
+    	 -a youtube.apk \
     	 -b revanced-patches.jar \
       	 -m revanced-integrations.apk \
-         -a youtube.apk \
          ${patches[@]} \
          -o build/revanced-nonroot.apk 
 else
