@@ -120,11 +120,11 @@ if [ -f "youtube.apk" ]; then
     out "${YELLOW}Building Non-root APK"
     
     java -jar revanced-cli.jar patch \
-         -moumt youtube.apk \
-         -patch-bundle revanced-patches.jar \
-         -merge revanced-integrations.apk \
+    	 -b revanced-patches.jar \
+         -a youtube.apk \
+         -m revanced-integrations.apk \
          ${patches[@]} \
-         -out build/revanced-nonroot.apk 
+         -o build/revanced-nonroot.apk 
 else
     out "${RED}Cannot find YouTube APK, skipping build"
 fi
