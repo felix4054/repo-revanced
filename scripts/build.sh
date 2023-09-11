@@ -14,6 +14,9 @@ out() {
 
 VMG_VERSION="0.2.26.225014"
 
+# Import build configuration
+source build.targets
+
 # File containing all patches
 patch_file=./patches.txt
 
@@ -35,17 +38,33 @@ declare -a patches
 # Artifacts associative array aka dictionary
 declare -A artifacts
 
+if [ "$EXTENDED_SUPPORT" = "true" ]; then
+# artifacts["revanced-cli.jar"]="inotia00/revanced-cli revanced-cli .jar"
+# artifacts["revanced-integrations.jar"]="inotia00/revanced-integrations revanced-integrations .jar"
+# artifacts["revanced-patches.jar"]="inotia00/revanced-patches revanced-patches .jar"
+artifacts["revanced-cli.jar"]="revanced/revanced-cli revanced-cli .jar"
+artifacts["revanced-integrations.apk"]="YT-Advanced/ReX-integrations revanced-integrations .apk"
+artifacts["revanced-patches.jar"]="YT-Advanced/ReX-patches revanced-patches .jar"
+else
+artifacts["revanced-integrations.apk"]="revanced/revanced-integrations revanced-integrations .apk"
+artifacts["revanced-cli.jar"]="revanced/revanced-cli revanced-cli .jar"
+artifacts["revanced-patches.jar"]="revanced/revanced-patches revanced-patches .jar"
+fi
+artifacts["vanced-microG.apk"]="inotia00/VancedMicroG microg .apk"
+artifacts["apkeep"]="EFForg/apkeep apkeep-x86_64-unknown-linux-gnu"
+
+
 # artifacts["revanced-cli.jar"]="inotia00/revanced-cli revanced-cli .jar"
 # artifacts["revanced-integrations.apk"]="inotia00/revanced-integrations revanced-integrations .apk"
 # artifacts["revanced-patches.jar"]="inotia00/revanced-patches revanced-patches .jar"
 # artifacts["microg.apk"]="inotia00/VancedMicroG microg .apk"
 #artifacts["apkeep"]="EFForg/apkeep apkeep-x86_64-unknown-linux-gnu"
 
-artifacts["revanced-cli.jar"]="revanced/revanced-cli revanced-cli .jar"
-artifacts["revanced-integrations.apk"]="YT-Advanced/ReX-integrations revanced-integrations .apk"
-artifacts["revanced-patches.jar"]="YT-Advanced/ReX-patches revanced-patches .jar"
-artifacts["microg.apk"]="inotia00/VancedMicroG microg .apk"
-artifacts["apkeep"]="EFForg/apkeep apkeep-x86_64-unknown-linux-gnu"
+# artifacts["revanced-cli.jar"]="revanced/revanced-cli revanced-cli .jar"
+# artifacts["revanced-integrations.apk"]="YT-Advanced/ReX-integrations revanced-integrations .apk"
+# artifacts["revanced-patches.jar"]="YT-Advanced/ReX-patches revanced-patches .jar"
+# artifacts["microg.apk"]="inotia00/VancedMicroG microg .apk"
+# artifacts["apkeep"]="EFForg/apkeep apkeep-x86_64-unknown-linux-gnu"
 
 # artifacts["revanced-cli.jar"]="revanced/revanced-cli revanced-cli .jar"
 # artifacts["revanced-integrations.apk"]="revanced/revanced-integrations app-release-unsigned .apk"
@@ -54,9 +73,14 @@ artifacts["apkeep"]="EFForg/apkeep apkeep-x86_64-unknown-linux-gnu"
 
 get_artifact_download_url () {
     # Usage: get_download_url <repo_name> <artifact_name> <file_type>
-    local api_url="https://api.github.com/repos/$1/releases/latest"
-    local result=$(curl $api_url | jq ".assets[] | select(.name | contains(\"$2\") and contains(\"$3\") and (contains(\".sig\") | not)) | .browser_download_url")
-    echo ${result:1:-1}
+    # local api_url="https://api.github.com/repos/$1/releases/latest"
+    # local result=$(curl $api_url | jq ".assets[] | select(.name | contains(\"$2\") and contains(\"$3\") and (contains(\".sig\") | not)) | .browser_download_url")
+    # echo ${result:1:-1}
+
+    local api_url result
+    api_url="https://api.github.com/repos/$1/releases/latest"
+    result=$(curl -s $api_url | jq ".assets[] | select(.name | contains(\"$2\") and contains(\"$3\") and (contains(\".sig\") | not)) | .browser_download_url")
+    echo "${result:1:-1}"
 }
 
 # Function for populating patches array, using a function here reduces redundancy & satisfies DRY principals
@@ -75,15 +99,16 @@ if [[ "$1" == "clean" ]]; then
     exit
 fi
 
-# if [[ "$1" == "experimental" ]]; then
-#     EXPERIMENTAL="--experimental"
-# fi
+if [[ "$1" == "experimental" ]]; then
+    EXPERIMENTAL="--experimental"
+fi
 
 # Fetch all the dependencies
 for artifact in "${!artifacts[@]}"; do
     if [ ! -f $artifact ]; then
         out "${YELLOW}Downloading $artifact${NC}"
-        curl -L -o $artifact $(get_artifact_download_url ${artifacts[$artifact]})
+        # curl -L -o $artifact $(get_artifact_download_url ${artifacts[$artifact]})
+	curl -sLo "$artifact" $(get_artifact_download_url ${artifacts[$artifact]})
     fi
 done
 
@@ -91,11 +116,11 @@ done
 chmod +x apkeep
 
 
-# if [ ! -f "vanced-microG.apk" ]; then
-#     out "${YELLOW}Downloading Vanced microG"
-#     ./apkeep -a com.mgoogle.android.gms@$VMG_VERSION .
-#     mv com.mgoogle.android.gms@$VMG_VERSION.apk vanced-microG.apk
-# fi
+if [ ! -f "vanced-microG.apk" ]; then
+    out "${YELLOW}Downloading Vanced microG"
+    ./apkeep -a com.mgoogle.android.gms@$VMG_VERSION .
+    mv com.mgoogle.android.gms@$VMG_VERSION.apk vanced-microG.apk
+fi
 
 
 
@@ -107,6 +132,7 @@ chmod +x apkeep
 out "${YELLOW}Building YouTube ReVanced APK"
 
 mkdir -p build
+
 if [[ -z "revanced-patches.jar" ]] || [[ -z "revanced-integrations.apk" ]] || [[ -z "revanced-cli.jar" ]]; then 
     printf "\033[0;31mError: patches files not found\033[0m\n" 
     exit 1 
@@ -116,18 +142,49 @@ for file in "revanced-cli.jar" "revanced-integrations.apk" "revanced-patches.jar
     printf "\033[0;36m->%s\033[0m\n" "$file" 
 done
 
-if [ -f "youtube.apk" ]; then
-    out "${YELLOW}Building Non-root APK"
+# if [ -f "youtube.apk" ]; then
+#     out "${YELLOW}Building Non-root APK"
     
-    java -jar revanced-cli.jar patch \
-    	 youtube.apk \
- 	 -b revanced-patches.jar \
-   	 -m revanced-integrations.apk \
-         ${patches[@]} \
-         -o build/revanced-nonroot.apk 
+#     java -jar revanced-cli.jar patch \
+#     	 com.google.android.youtube.apk \
+#  	 -b revanced-patches.jar \
+#    	 -m revanced-integrations.apk \
+#          ${patches[@]} \
+#          -o build/revanced-nonroot.apk 
+# else
+#     out "${RED}Cannot find YouTube APK, skipping build"
+# fi
+
+function build_youtube_root(){
+echo "************************************"
+echo "Building YouTube Root APK"
+echo "************************************"
+
+if [ -f "com.google.android.youtube.apk" ]; then
+    java -jar revanced-cli.jar -m revanced-integrations.apk -b revanced-patches.jar --mount \
+        -e microg-support ${patches[@]} \
+        $EXPERIMENTAL \
+        -a com.google.android.youtube.apk -o "build/revanced-youtube-$(cat versions.json | grep -oP '(?<="com.google.android.youtube.apk": ")[^"]*')-root.apk"
 else
     out "${RED}Cannot find YouTube APK, skipping build"
 fi
+}
+
+function build_youtube_nonroot(){
+echo "************************************"
+echo "Building YouTube Non-root APK"
+echo "************************************"
+
+if [ -f "com.google.android.youtube.apk" ]; then
+    java -jar revanced-cli.jar -m revanced-integrations.apk -b revanced-patches.jar \
+        ${patches[@]} \
+        $EXPERIMENTAL \
+        -a com.google.android.youtube.apk -o "build/revanced-youtube-$(cat versions.json | grep -oP '(?<="com.google.android.youtube.apk": ")[^"]*').apk"
+else
+    out "${RED}Cannot find YouTube APK, skipping build"
+fi
+}
+
 
 
 # A list of available patches and their descriptions can be found here:
