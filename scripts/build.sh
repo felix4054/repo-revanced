@@ -121,7 +121,7 @@ if [ -f "youtube.apk" ]; then
     
     java -jar revanced-cli.jar \
          -a youtube.apk \
-         -b revanced-patches.jar \
+         -patch-bundle revanced-patches.jar \
          -m revanced-integrations.apk \
          ${patches[@]} \
          -o build/revanced-nonroot.apk 
