@@ -6,7 +6,6 @@ custom-seekbar-color
 
 # INCLUDE PATCHES FROM BELOW. DO NOT REMOVE THIS LINE
 force-premium-heading
-microg-support
 amoled
 materialyou
 custom-package-name
