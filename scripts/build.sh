@@ -134,7 +134,7 @@ out "${YELLOW}Building YouTube ReVanced APK"
 mkdir -p build
 
 
-if [ -f "youtube.apk" ]; then
+if [ -f "com.google.android.youtube.apk" ]; then
     out "${YELLOW}Building Non-root APK"
     
     java -jar revanced-cli.jar  \
