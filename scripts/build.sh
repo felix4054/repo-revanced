@@ -157,12 +157,14 @@ if [ -f "com.google.android.youtube.apk" ]; then
          $EXPERIMENTAL \
          # -a com.google.android.youtube.apk -o "build/revanced-youtube-$(cat versions.json | grep -oP '(?<="com.google.android.youtube.apk": ")[^"]*')-root.apk"
 	 -a com.google.android.youtube.apk -o "build/revanced-root.apk"
+
+    mv build/revanced-root-signed.apk build/revanced-root-release.apk
 else
     out "${RED}Cannot find YouTube APK, skipping build"
 fi
 }
 
-mv build/revanced-root-signed.apk build/revanced-root-release.apk
+
 
 function build_youtube_nonroot(){
 out "${YELLOW}Building Non-root APK"
@@ -174,12 +176,14 @@ if [ -f "com.google.android.youtube.apk" ]; then
          $EXPERIMENTAL \
          # -a com.google.android.youtube.apk -o "build/revanced-youtube-$(cat versions.json | grep -oP '(?<="com.google.android.youtube.apk": ")[^"]*')-nonroot.apk"
 	 -a com.google.android.youtube.apk -o "build/revanced-nonroot.apk"
+  
+    mv build/revanced-nonroot-signed.apk build/revanced-nonroot-release.apk
 else
     out "${RED}Cannot find YouTube APK, skipping build"
 fi
 }
 
-mv build/revanced-nonroot-signed.apk build/revanced-nonroot-release.apk
+
 
 if [ "$YOUTUBE_ROOT" = "true" ]; then
 	build_youtube_root
