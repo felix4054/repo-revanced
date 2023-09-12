@@ -165,7 +165,7 @@ function build_youtube_nonroot(){
 out "${YELLOW}Building Non-root APK"
 
 if [ -f "com.google.android.youtube.apk" ]; then
-    java -jar revanced-cli.jar -m revanced-integrations.apk -b revanced-patches.jar  \
+    java -jar revanced-cli.jar -m revanced-integrations.apk -b revanced-patches.jar patch \
 	 -i microg-support \
          ${patches[@]} \
          # $EXPERIMENTAL \
