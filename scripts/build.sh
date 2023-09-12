@@ -151,13 +151,11 @@ function build_youtube_root(){
 out "${YELLOW}Building Root APK"
 
 if [ -f "com.google.android.youtube.apk" ]; then
-    java -jar revanced-cli.jar \
-         -m revanced-integrations.apk \
-	 -b revanced-patches.jar --mount \
+    java -jar revanced-cli.jar -m revanced-integrations.apk -b revanced-patches.jar --mount \
          -e microg-support \
 	 ${patches[@]} \
          # $EXPERIMENTAL \
-         -a com.google.android.youtube.apk 
+         -a com.google.android.youtube.apk \
 	 -o "build/revanced-youtube-$(cat versions.json | grep -oP '(?<="com.google.android.youtube.apk": ")[^"]*')-root.apk"
 else
     out "${RED}Cannot find YouTube APK, skipping build"
@@ -168,9 +166,7 @@ function build_youtube_nonroot(){
 out "${YELLOW}Building Non-root APK"
 
 if [ -f "com.google.android.youtube.apk" ]; then
-    java -jar revanced-cli.jar \
-         -m revanced-integrations.apk \
-         -b revanced-patches.jar --mount \
+    java -jar revanced-cli.jar -m revanced-integrations.apk -b revanced-patches.jar --mount \
 	 -i microg-support \
          ${patches[@]} \
          # $EXPERIMENTAL \
