@@ -19,11 +19,11 @@ jobs:
           distribution: "zulu"
 
       - name: Download APKs from APKMirror
-        run: ./download_apkmirror.sh
+        run: ./scripts/download.sh
 
       - name: Test Build APKs
         run: |
-          ./build_revanced.sh
+          ./scripts/build.sh 
           for filename in build/*.apk; do
             if [ -e "$filename" ]; then
               printf '"%s" exists\n' "$filename"
