@@ -134,64 +134,64 @@ out "${YELLOW}Building YouTube ReVanced APK"
 mkdir -p build
 
 
-# if [ -f "youtube.apk" ]; then
-#     out "${YELLOW}Building Non-root APK"
+if [ -f "youtube.apk" ]; then
+    out "${YELLOW}Building Non-root APK"
     
-#     java -jar revanced-cli.jar patch \
-#     	 com.google.android.youtube.apk \
-#  	 -b revanced-patches.jar \
-#    	 -m revanced-integrations.apk \
-#          ${patches[@]} \
-#          -o build/revanced-nonroot.apk 
+    java -jar revanced-cli.jar  \
+    	 -a com.google.android.youtube.apk \
+ 	 -b revanced-patches.jar \
+   	 -m revanced-integrations.apk \
+         ${patches[@]} \
+         -o build/revanced-nonroot.apk 
+else
+    out "${RED}Cannot find YouTube APK, skipping build"
+fi
+
+# function build_youtube_root(){
+# out "${YELLOW}Building Root APK"
+
+# if [ -f "com.google.android.youtube.apk" ]; then
+#     java -jar revanced-cli.jar -m revanced-integrations.apk -b revanced-patches.jar --mount \
+#          -e microg-support \
+# 	 ${patches[@]} \
+#          $EXPERIMENTAL \
+# 	 -a com.google.android.youtube.apk -o build/revanced-root.apk
+#          # -a com.google.android.youtube.apk -o "build/revanced-youtube-$(cat versions.json | grep -oP '(?<="com.google.android.youtube.apk": ")[^"]*')-root.apk"
 # else
 #     out "${RED}Cannot find YouTube APK, skipping build"
 # fi
-
-function build_youtube_root(){
-out "${YELLOW}Building Root APK"
-
-if [ -f "com.google.android.youtube.apk" ]; then
-    java -jar revanced-cli.jar -m revanced-integrations.apk -b revanced-patches.jar --mount \
-         -e microg-support \
-	 ${patches[@]} \
-         $EXPERIMENTAL \
-	 -a com.google.android.youtube.apk -o build/revanced-root.apk
-         # -a com.google.android.youtube.apk -o "build/revanced-youtube-$(cat versions.json | grep -oP '(?<="com.google.android.youtube.apk": ")[^"]*')-root.apk"
-else
-    out "${RED}Cannot find YouTube APK, skipping build"
-fi
-}
+# }
 
 
 
-function build_youtube_nonroot(){
-out "${YELLOW}Building Non-root APK"
+# function build_youtube_nonroot(){
+# out "${YELLOW}Building Non-root APK"
 
-if [ -f "com.google.android.youtube.apk" ]; then
-    java -jar revanced-cli.jar -m revanced-integrations.apk -b revanced-patches.jar \
-	 -i microg-support \
-         ${patches[@]} \
-         $EXPERIMENTAL \
-	 -a com.google.android.youtube.apk -o build/revanced-nonroot.apk
-         # -a com.google.android.youtube.apk -o "build/revanced-youtube-$(cat versions.json | grep -oP '(?<="com.google.android.youtube.apk": ")[^"]*')-nonroot.apk"
-else
-    out "${RED}Cannot find YouTube APK, skipping build"
-fi
-}
+# if [ -f "com.google.android.youtube.apk" ]; then
+#     java -jar revanced-cli.jar -m revanced-integrations.apk -b revanced-patches.jar \
+# 	 -i microg-support \
+#          ${patches[@]} \
+#          $EXPERIMENTAL \
+# 	 -a com.google.android.youtube.apk -o build/revanced-nonroot.apk
+#          # -a com.google.android.youtube.apk -o "build/revanced-youtube-$(cat versions.json | grep -oP '(?<="com.google.android.youtube.apk": ")[^"]*')-nonroot.apk"
+# else
+#     out "${RED}Cannot find YouTube APK, skipping build"
+# fi
+# }
 
 
 
-if [ "$YOUTUBE_ROOT" = "true" ]; then
-	build_youtube_root
-else
-	out "${RED}Skipping YouTube ReVanced (root)"
-	# printf "\nSkipping YouTube ReVanced (root)"
-fi
+# if [ "$YOUTUBE_ROOT" = "true" ]; then
+# 	build_youtube_root
+# else
+# 	out "${RED}Skipping YouTube ReVanced (root)"
+# 	# printf "\nSkipping YouTube ReVanced (root)"
+# fi
 
-if [ "$YOUTUBE_NONROOT" = "true" ]; then
-	build_youtube_nonroot
-else
-	out "${RED}Skipping YouTube ReVanced (nonroot)"
-	# printf "\nSkipping YouTube ReVanced (nonroot)"
-fi
+# if [ "$YOUTUBE_NONROOT" = "true" ]; then
+# 	build_youtube_nonroot
+# else
+# 	out "${RED}Skipping YouTube ReVanced (nonroot)"
+# 	# printf "\nSkipping YouTube ReVanced (nonroot)"
+# fi
 
