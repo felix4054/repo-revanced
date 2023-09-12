@@ -42,8 +42,8 @@ jobs:
       # - name: Rename APK file
       #   run: ./scripts/rename-updater.sh
           
-      - name: Generate SHA256 checksums for the signed APK file
-        run: ./scripts/sha256gen.sh -r
+      # - name: Generate SHA256 checksums for the signed APK file
+      #   run: ./scripts/sha256gen.sh -r
       
       - uses: marvinpinto/action-automatic-releases@latest
         name: Release ReVanced
