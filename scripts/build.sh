@@ -158,7 +158,7 @@ if [ -f "com.google.android.youtube.apk" ]; then
          # -a com.google.android.youtube.apk -o "build/revanced-youtube-$(cat versions.json | grep -oP '(?<="com.google.android.youtube.apk": ")[^"]*')-root.apk"
 	 -a com.google.android.youtube.apk -o "build/revanced-root.apk"
 
-    mv build/revanced-root-signed.apk build/revanced-root-release.apk
+    # mv build/revanced-root-signed.apk build/revanced-root-release.apk
 else
     out "${RED}Cannot find YouTube APK, skipping build"
 fi
@@ -177,7 +177,7 @@ if [ -f "com.google.android.youtube.apk" ]; then
          # -a com.google.android.youtube.apk -o "build/revanced-youtube-$(cat versions.json | grep -oP '(?<="com.google.android.youtube.apk": ")[^"]*')-nonroot.apk"
 	 -a com.google.android.youtube.apk -o "build/revanced-nonroot.apk"
   
-    mv build/revanced-nonroot-signed.apk build/revanced-nonroot-release.apk
+    # mv build/revanced-nonroot-signed.apk build/revanced-nonroot-release.apk
 else
     out "${RED}Cannot find YouTube APK, skipping build"
 fi
