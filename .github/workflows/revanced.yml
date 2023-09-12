@@ -51,6 +51,6 @@ jobs:
           # draft: true
           title: "Release ${{ env.date_now }}"
           files: |
-            build/revanced-youtube-18.27.35-root.apk
-            build/revanced-youtube-18.27.35-non-root.apk
+            build/revanced-youtube-18.27.35-root-signed.apk
+            build/revanced-youtube-18.27.35-non-root-signed.apk
             vanced-microG.apk
