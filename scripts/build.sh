@@ -155,7 +155,7 @@ if [ -f "com.google.android.youtube.apk" ]; then
          -e microg-support \
 	 ${patches[@]} \
          # $EXPERIMENTAL \
-         com.google.android.youtube.apk -o "build/revanced-youtube-$(cat versions.json | grep -oP '(?<="com.google.android.youtube.apk": ")[^"]*')-root.apk"
+         -a com.google.android.youtube.apk -o "build/revanced-youtube-$(cat versions.json | grep -oP '(?<="com.google.android.youtube.apk": ")[^"]*')-root.apk"
 else
     out "${RED}Cannot find YouTube APK, skipping build"
 fi
@@ -166,7 +166,7 @@ out "${YELLOW}Building Non-root APK"
 
 if [ -f "com.google.android.youtube.apk" ]; then
     java -jar revanced-cli.jar -m revanced-integrations.apk -b revanced-patches.jar patch \
-    	 com.google.android.youtube.apk \
+    	 -a com.google.android.youtube.apk \
 	 -i microg-support \
          ${patches[@]} \
          # $EXPERIMENTAL \
