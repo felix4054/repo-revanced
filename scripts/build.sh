@@ -155,7 +155,7 @@ if [ -f "com.google.android.youtube.apk" ]; then
          -e microg-support \
 	 ${patches[@]} \
          # $EXPERIMENTAL \
-         -a com.google.android.youtube.apk -o "build/revanced-youtube-$(cat versions.json | grep -oP '(?<="com.google.android.youtube.apk": ")[^"]*')-root.apk"
+         com.google.android.youtube.apk -o "build/revanced-youtube-$(cat versions.json | grep -oP '(?<="com.google.android.youtube.apk": ")[^"]*')-root.apk"
 else
     out "${RED}Cannot find YouTube APK, skipping build"
 fi
@@ -169,7 +169,7 @@ if [ -f "com.google.android.youtube.apk" ]; then
 	 -i microg-support \
          ${patches[@]} \
          # $EXPERIMENTAL \
-         -a com.google.android.youtube.apk -o "build/revanced-youtube-$(cat versions.json | grep -oP '(?<="com.google.android.youtube.apk": ")[^"]*').apk"
+         com.google.android.youtube.apk -o "build/revanced-youtube-$(cat versions.json | grep -oP '(?<="com.google.android.youtube.apk": ")[^"]*').apk"
 else
     out "${RED}Cannot find YouTube APK, skipping build"
 fi
