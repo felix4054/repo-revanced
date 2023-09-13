@@ -139,10 +139,10 @@ if [ -f "com.google.android.youtube.apk" ]; then
     
     java -jar revanced-cli.jar  patch com.google.android.youtube.apk \
  	 --patch-bundle revanced-patches.jar \
-   	 -merge revanced-integrations.apk \
+   	 --merge revanced-integrations.apk \
          ${patches[@]} \
 	 $EXPERIMENTAL \
-         -out revanced-nonroot.apk 
+         --out revanced-nonroot.apk 
 else
     out "${RED}Cannot find YouTube APK, skipping build"
 fi
