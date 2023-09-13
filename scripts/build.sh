@@ -137,7 +137,7 @@ mkdir -p build
 if [ -f "com.google.android.youtube.apk" ]; then
     out "${YELLOW}Building Non-root APK"
     
-    java -Djava.awt.headless=true -jar revanced-cli.jar  patch com.google.android.youtube.apk \
+    java -jar revanced-cli.jar  patch com.google.android.youtube.apk \
  	 -b revanced-patches.jar \
    	 -m revanced-integrations.apk \
          ${patches[@]} \
