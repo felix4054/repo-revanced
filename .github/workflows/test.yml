@@ -15,7 +15,7 @@ jobs:
       - name: Setup Java JDK
         uses: actions/setup-java@v3.10.0
         with:
-          java-version: "17"
+          java-version: "11"
           distribution: "zulu"
 
       - name: Download APKs from APKMirror
