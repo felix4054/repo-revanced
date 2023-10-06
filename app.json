@@ -11,12 +11,12 @@
     },
     {
       "key" : "HeroMiners",
-      "pool" : "ru.scala.herominers.com",
+      "pool" : "scala.herominers.com",
       "port" : "1190",
       "ports" : ["1190"],
       "type"  :  2,
       "url" : "https://ru.scala.herominers.com",
-      "ip" : "141.95.126.31"
+      "ip" : "138.201.217.40"
     }
   ]
 }
