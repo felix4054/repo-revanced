@@ -1,0 +1,22 @@
+{
+  "pools" : [
+    {
+      "key" : "Scala Project (Official Pool)",
+      "pool" : "pool.scalaproject.io",
+      "port" : "3333",
+      "ports" : ["3333", "5555", "7777", "8888"],
+      "type"  :  3,
+      "url" : "https://pool.scalaproject.io",
+      "ip" : "95.111.237.231"
+    },
+    {
+      "key" : "HeroMiners",
+      "pool" : "ru.scala.herominers.com",
+      "port" : "1190",
+      "ports" : ["1190"],
+      "type"  :  2,
+      "url" : "https://ru.scala.herominers.com",
+      "ip" : "141.95.126.31"
+    }
+  ]
+}
