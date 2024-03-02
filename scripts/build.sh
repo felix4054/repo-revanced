@@ -177,7 +177,7 @@ if [ -f "com.google.android.youtube.apk" ]; then
 else
     out "${RED}Cannot find YouTube APK, skipping build"
 fi
-}
+# }
 
 
 
