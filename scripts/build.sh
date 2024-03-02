@@ -148,7 +148,7 @@ else
 fi
 
 # Rename the signed APK
-# mv build/revanced-nonroot.apk build/revanced-nonroot-release.apk
+mv build/revanced-nonroot.apk build/revanced-nonroot-yt.apk
 
 # function build_youtube_root(){
 # out "${YELLOW}Building Root APK"
