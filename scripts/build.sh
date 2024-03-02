@@ -18,7 +18,7 @@ VMG_VERSION="0.2.26.225014"
 source build.targets
 
 # File containing all patches
-patch_file=./patches.txt
+patch_file=./youtube.patch
 
 # Get line numbers where included & excluded patches start from. 
 # We rely on the hardcoded messages to get the line numbers using grep
