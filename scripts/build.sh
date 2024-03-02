@@ -165,19 +165,19 @@ fi
 
 
 # function build_youtube_nonroot(){
-# out "${YELLOW}Building Non-root APK"
+out "${YELLOW}Building Non-root APK"
 
-# if [ -f "com.google.android.youtube.apk" ]; then
-#     java -jar revanced-cli.jar -m revanced-integrations.apk -b revanced-patches.jar \
-# 	 -i microg-support \
-#          ${patches[@]} \
-#          $EXPERIMENTAL \
-# 	 -a com.google.android.youtube.apk -o build/revanced-nonroot.apk
-#          # -a com.google.android.youtube.apk -o "build/revanced-youtube-$(cat versions.json | grep -oP '(?<="com.google.android.youtube.apk": ")[^"]*')-nonroot.apk"
-# else
-#     out "${RED}Cannot find YouTube APK, skipping build"
-# fi
-# }
+if [ -f "com.google.android.youtube.apk" ]; then
+    java -jar revanced-cli.jar -m revanced-integrations.apk -b revanced-patches.jar \
+	 -i microg-support \
+         ${patches[@]} \
+         $EXPERIMENTAL \
+	 -a com.google.android.youtube.apk -o build/revanced-nonroot.apk
+         # -a com.google.android.youtube.apk -o "build/revanced-youtube-$(cat versions.json | grep -oP '(?<="com.google.android.youtube.apk": ")[^"]*')-nonroot.apk"
+else
+    out "${RED}Cannot find YouTube APK, skipping build"
+fi
+}
 
 
 
