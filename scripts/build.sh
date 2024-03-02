@@ -147,6 +147,9 @@ else
     out "${RED}Cannot find YouTube APK, skipping build"
 fi
 
+# Rename the signed APK
+mv build/revanced-nonroot.apk build/revanced-nonroot-release.apk
+
 # function build_youtube_root(){
 # out "${YELLOW}Building Root APK"
 
