@@ -70,19 +70,25 @@ get_artifact_download_url () {
 # Function for populating patches array, using a function here reduces redundancy & satisfies DRY principals
 populate_patches() {
     # Note: <<< defines a 'here-string'. Meaning, it allows reading from variables just like from a file
-    while read -r patch; do
-        patches+=("$1 $patch")
+    # while read -r patch; do
+    #     patches+=("$1 $patch")
+    # done <<< "$2"
+    while read -r revanced_patches
+    do
+        patches+=("$1 $revanced_patches")
     done <<< "$2"
 }
 
 ## Main
 
 # cleanup to fetch new revanced on next run
+out "${BLUE}CLEANING UP"
 if [[ "$1" == "clean" ]]; then
     rm -f revanced-cli.jar revanced-integrations.apk revanced-patches.jar microg.apk
     exit
 fi
 
+out "${BLUE}SET EXPERIMENTAL"
 if [[ "$1" == "experimental" ]]; then
     EXPERIMENTAL="--experimental"
 fi
@@ -107,7 +113,7 @@ if [ ! -f "vanced-microG.apk" ]; then
 fi
 
 
-
+out "${BLUE}CALL POPULATE PATCHES"
 # If the variables are NOT empty, call populate_patches with proper arguments
 [[ ! -z "$excluded_patches" ]] && populate_patches "-e" "$excluded_patches"
 [[ ! -z "$included_patches" ]] && populate_patches "-i" "$included_patches"
@@ -175,3 +181,5 @@ if [ "$YOUTUBE_NONROOT" = "true" ]; then
 else
 	out "${CYAN}Skipping YouTube ReVanced (nonroot)"
 fi
+
+out "${BLUE}DONE"
