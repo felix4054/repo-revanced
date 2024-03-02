@@ -151,12 +151,12 @@ function build_youtube_nonroot() {
 if [ -f "com.google.android.youtube.apk" ]; then
     out "${YELLOW}Building Non-Root APK"
     
-    java -jar revanced-cli.jar  patch com.google.android.youtube.apk \
+    java -jar revanced-cli.jar  patch \
          -m revanced-integrations.apk \
  	 -b revanced-patches.jar \
          ${patches[@]} \
 	 $EXPERIMENTAL \
-         -o "build/rvx-youtube-$(cat versions.json | grep -oP '(?<="com.google.android.youtube.apk": ")[^"]*')-nonroot.apk" 
+         -o com.google.android.youtube.apk "build/rvx-youtube-$(cat versions.json | grep -oP '(?<="com.google.android.youtube.apk": ")[^"]*')-nonroot.apk" 
 	 
 else
     out "${RED}Cannot find YouTube APK, skipping build"
