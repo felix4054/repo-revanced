@@ -5,7 +5,7 @@ custom-branding-icon-revancify-blue
 custom-seekbar-color
 
 # INCLUDE PATCHES FROM BELOW. DO NOT REMOVE THIS LINE
-premium-heading
+force-premium-heading
 amoled
 materialyou
 custom-package-name
