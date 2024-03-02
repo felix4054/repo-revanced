@@ -132,6 +132,7 @@ mkdir -p build
 # fi
 
 function build_youtube_root() {
+if [ -f "com.google.android.youtube.apk" ]; then
     out "${YELLOW}Building Root APK"
     
     java -jar revanced-cli.jar  patch com.google.android.youtube.apk \
@@ -148,6 +149,7 @@ fi
 }
 
 function build_youtube_nonroot() {
+if [ -f "com.google.android.youtube.apk" ]; then
     out "${YELLOW}Building Non-Root APK"
     
     java -jar revanced-cli.jar  patch com.google.android.youtube.apk \
@@ -163,3 +165,14 @@ else
 fi
 }
 
+if [ "$YOUTUBE_ROOT" = "true" ]; then
+	build_youtube_root
+else
+	out "${RED}Skipping YouTube ReVanced (root)"
+fi
+
+if [ "$YOUTUBE_NONROOT" = "true" ]; then
+	build_youtube_nonroot
+else
+	out "${RED}Skipping YouTube ReVanced (nonroot)"
+fi
