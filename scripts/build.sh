@@ -125,14 +125,14 @@ if [ -f "com.google.android.youtube.apk" ]; then
    	 --merge revanced-integrations.apk \
          ${patches[@]} \
 	 $EXPERIMENTAL \
-  	 --out "build/revanced-youtube-$(cat versions.json | grep -oP '(?<="com.google.android.youtube.apk": ")[^"]*')-nonroot.apk"
-         # --out build/revanced-nonroot.apk 
+  	 # --out "build/revanced-youtube-$(cat versions.json | grep -oP '(?<="com.google.android.youtube.apk": ")[^"]*')-nonroot.apk"
+         --out build/revanced-nonroot.apk 
 else
     out "${RED}Cannot find YouTube APK, skipping build"
 fi
 
 # Rename the signed APK
-mv build/revanced-nonroot.apk build/revanced-nonroot-yt.apk
+mv build/revanced-nonroot.apk "build/revanced-youtube-$(cat versions.json | grep -oP '(?<="com.google.android.youtube.apk": ")[^"]*')-nonroot.apk"
 
 # function build_youtube_root(){
 # out "${YELLOW}Building Root APK"
