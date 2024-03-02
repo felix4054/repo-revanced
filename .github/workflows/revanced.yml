@@ -49,5 +49,5 @@ jobs:
           # draft: true
           title: "Release ${{ env.date_now }}"
           files: |
-            build/revanced-nonroot.apk
+            build/revanced-nonroot-yt.apk
             vanced-microG.apk
