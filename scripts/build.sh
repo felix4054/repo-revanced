@@ -126,7 +126,7 @@ if [ -f "com.google.android.youtube.apk" ]; then
    	 --merge revanced-integrations.apk \
          ${patches[@]} \
 	 $EXPERIMENTAL \
-         --out build/revanced-nonroot-yt.apk 
+         --out "build/revanced-youtube-$(cat versions.json | grep -oP '(?<="com.google.android.youtube.apk": ")[^"]*')-nonroot.apk"
 else
     out "${RED}Cannot find YouTube APK, skipping build"
 fi
