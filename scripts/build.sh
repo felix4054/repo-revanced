@@ -165,14 +165,14 @@ else
 fi
 }
 
-if [ "$YOUTUBE_ROOT" = "true" ]; then
+if [ "$YOUTUBE_ROOT" = "true" ]  && [ "$EXTENDED_SUPPORT" != "true" ]; then
 	build_youtube_root
 else
-	out "${RED}Skipping YouTube ReVanced (root)"
+	out "${CYAN}Skipping YouTube ReVanced (root)"
 fi
 
-if [ "$YOUTUBE_NONROOT" = "true" ]; then
+if [ "$YOUTUBE_NONROOT" = "true" ]  && [ "$EXTENDED_SUPPORT" != "true" ]; then
 	build_youtube_nonroot
 else
-	out "${RED}Skipping YouTube ReVanced (nonroot)"
+	out "${CYAN}Skipping YouTube ReVanced (nonroot)"
 fi
