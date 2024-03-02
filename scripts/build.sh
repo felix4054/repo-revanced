@@ -40,11 +40,11 @@ declare -A artifacts
 
 if [ "$EXTENDED_SUPPORT" = "true" ]; then
 
-artifacts["revanced-integrations.jar"]="inotia00/revanced-integrations revanced-integrations .jar"
+artifacts["revanced-integrations.jar"]="inotia00/revanced-integrations revanced-integrations .apk"
 artifacts["revanced-patches.jar"]="inotia00/revanced-patches revanced-patches .jar"
 artifacts["revanced-cli.jar"]="revanced/revanced-cli revanced-cli .jar"
 else
-artifacts["revanced-integrations.jar"]="inotia00/revanced-integrations revanced-integrations .jar"
+artifacts["revanced-integrations.jar"]="inotia00/revanced-integrations revanced-integrations .apk"
 artifacts["revanced-patches.jar"]="inotia00/revanced-patches revanced-patches .jar"
 artifacts["revanced-cli.jar"]="revanced/revanced-cli revanced-cli .jar"
 # artifacts["revanced-integrations.apk"]="revanced/revanced-integrations revanced-integrations .apk"
