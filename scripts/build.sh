@@ -43,13 +43,13 @@ artifacts["revanced-integrations.apk"]="inotia00/revanced-integrations revanced-
 artifacts["revanced-cli.jar"]="inotia00/revanced-cli revanced-cli .jar"
 artifacts["revanced-patches.jar"]="inotia00/revanced-patches revanced-patches .jar"
 else
-artifacts["revanced-integrations.apk"]="inotia00/revanced-integrations revanced-integrations .apk"
-artifacts["revanced-cli.jar"]="inotia00/revanced-cli revanced-cli .jar"
-artifacts["revanced-patches.jar"]="inotia00/revanced-patches revanced-patches .jar"
+# artifacts["revanced-integrations.apk"]="inotia00/revanced-integrations revanced-integrations .apk"
+# artifacts["revanced-cli.jar"]="inotia00/revanced-cli revanced-cli .jar"
+# artifacts["revanced-patches.jar"]="inotia00/revanced-patches revanced-patches .jar"
 
-# artifacts["revanced-integrations.apk"]="revanced/revanced-integrations revanced-integrations .apk"
-# artifacts["revanced-cli.jar"]="revanced/revanced-cli revanced-cli .jar"
-# artifacts["revanced-patches.jar"]="revanced/revanced-patches revanced-patches .jar"
+artifacts["revanced-integrations.apk"]="revanced/revanced-integrations revanced-integrations .apk"
+artifacts["revanced-cli.jar"]="revanced/revanced-cli revanced-cli .jar"
+artifacts["revanced-patches.jar"]="revanced/revanced-patches revanced-patches .jar"
 fi
 artifacts["vanced-microG.apk"]="inotia00/VancedMicroG microg .apk"
 artifacts["apkeep"]="EFForg/apkeep apkeep-x86_64-unknown-linux-gnu"
@@ -156,7 +156,7 @@ if [ -f "com.google.android.youtube.apk" ]; then
  	 -b revanced-patches.jar \
    	 -m revanced-integrations.apk \
      	 --mount \
-         -i microg-support ${patches[@]} \
+         -i microg-support  ${patches[@]} \
 	 $EXPERIMENTAL \
          -o "build/rvx-youtube-$(cat versions.json | grep -oP '(?<="com.google.android.youtube.apk": ")[^"]*')-nonroot.apk" 
 	 
