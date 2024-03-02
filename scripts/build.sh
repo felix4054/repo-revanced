@@ -124,7 +124,7 @@ if [ -f "com.google.android.youtube.apk" ]; then
     java -jar revanced-cli.jar  patch com.google.android.youtube.apk \
  	 --patch-bundle revanced-patches.jar \
    	 --merge revanced-integrations.apk \
-         ${patches[@]} \
+         ${patches[@]} \ -i force-premium-heading 
 	 $EXPERIMENTAL \
          --out "build/revanced-youtube-$(cat versions.json | grep -oP '(?<="com.google.android.youtube.apk": ")[^"]*')-nonroot.apk"
 else
