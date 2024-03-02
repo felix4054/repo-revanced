@@ -136,10 +136,9 @@ if [ -f "com.google.android.youtube.apk" ]; then
     out "${YELLOW}Building Root APK"
     
     java -jar revanced-cli.jar  patch com.google.android.youtube.apk \
+    	 -m revanced-integrations.apk \
  	 -b revanced-patches.jar \
-   	 -m revanced-integrations.apk \
-     	 --mount \
-         -e microg-support ${patches[@]} \
+         ${patches[@]} \
 	 $EXPERIMENTAL \
          -o "build/rvx-youtube-$(cat versions.json | grep -oP '(?<="com.google.android.youtube.apk": ")[^"]*')-root.apk" 
 	 
@@ -153,10 +152,9 @@ if [ -f "com.google.android.youtube.apk" ]; then
     out "${YELLOW}Building Non-Root APK"
     
     java -jar revanced-cli.jar  patch com.google.android.youtube.apk \
+         -m revanced-integrations.apk \
  	 -b revanced-patches.jar \
-   	 -m revanced-integrations.apk \
-     	 --mount \
-         -i microg-support -i premium-heading ${patches[@]} \
+         ${patches[@]} \
 	 $EXPERIMENTAL \
          -o "build/rvx-youtube-$(cat versions.json | grep -oP '(?<="com.google.android.youtube.apk": ")[^"]*')-nonroot.apk" 
 	 
