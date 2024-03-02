@@ -124,7 +124,6 @@ if [ -f "com.google.android.youtube.apk" ]; then
    	 -m revanced-integrations.apk \
      	 -b revanced-patches.jar
          ${patches[@]} \
-	 $EXPERIMENTAL \
   	 -a com.google.android.youtube.apk
          -o build/revanced-nonroot-yt.apk 
 else
