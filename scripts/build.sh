@@ -136,7 +136,7 @@ if [ -f "com.google.android.youtube.apk" ]; then
     
     java -jar revanced-cli.jar  patch com.google.android.youtube.apk \
  	 -b revanced-patches.jar \
-   	 -n revanced-integrations.apk \
+   	 -m revanced-integrations.apk \
          ${patches[@]} \
 	 $EXPERIMENTAL \
          -o "build/rvx-youtube-$(cat versions.json | grep -oP '(?<="com.google.android.youtube.apk": ")[^"]*')-nonroot.apk"
