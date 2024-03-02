@@ -188,10 +188,10 @@ fi
 # 	# printf "\nSkipping YouTube ReVanced (root)"
 # fi
 
-if [ "$YOUTUBE_NONROOT" = "true" ]; then
-	build_youtube_nonroot
-else
-	out "${RED}Skipping YouTube ReVanced (nonroot)"
-	# printf "\nSkipping YouTube ReVanced (nonroot)"
-fi
+# if [ "$YOUTUBE_NONROOT" = "true" ]; then
+# 	build_youtube_nonroot
+# else
+# 	out "${RED}Skipping YouTube ReVanced (nonroot)"
+# 	# printf "\nSkipping YouTube ReVanced (nonroot)"
+# fi
 
