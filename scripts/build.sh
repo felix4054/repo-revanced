@@ -101,9 +101,8 @@ done
 # Fetch Vanced microG
 chmod +x apkeep
 
-
+out "${BLUE}VANCED MICROG"
 if [ ! -f "vanced-microG.apk" ]; then
-    out "${CYAN}Choosing version microG @$VMG_VERSION"
     out "${YELLOW}Downloading Vanced microG: @$VMG_VERSION"
     ./apkeep -a com.mgoogle.android.gms@$VMG_VERSION .
     mv com.mgoogle.android.gms@$VMG_VERSION.apk microG-@$VMG_VERSION.apk
@@ -120,19 +119,6 @@ out "${YELLOW}Building YouTube ReVanced APK"
 
 mkdir -p build
 
-
-# if [ -f "com.google.android.youtube.apk" ]; then
-#     out "${YELLOW}Building Non-root APK"
-    
-#     java -jar revanced-cli.jar  patch com.google.android.youtube.apk \
-#  	 -b revanced-patches.jar \
-#    	 -m revanced-integrations.apk \
-#          -i premium-heading ${patches[@]} \
-# 	 $EXPERIMENTAL \
-#          -o "build/rvx-youtube-$(cat versions.json | grep -oP '(?<="com.google.android.youtube.apk": ")[^"]*')-nonroot.apk"
-# else
-#     out "${RED}Cannot find YouTube APK, skipping build"
-# fi
 
 function build_youtube_root() {
 if [ -f "com.google.android.youtube.apk" ]; then
