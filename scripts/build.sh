@@ -56,7 +56,7 @@ artifacts["revanced-patches.jar"]="YT-Advanced/ReX-patches revanced-patches .jar
 # artifacts["revanced-cli.jar"]="revanced/revanced-cli revanced-cli .jar"
 # artifacts["revanced-patches.jar"]="revanced/revanced-patches revanced-patches .jar"
 fi
-artifacts["vanced-microG.apk"]="inotia00/VancedMicroG microg .apk"
+# artifacts["vanced-microG.apk"]="inotia00/VancedMicroG microg .apk"
 artifacts["apkeep"]="EFForg/apkeep apkeep-x86_64-unknown-linux-gnu"
 
 
