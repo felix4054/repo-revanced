@@ -11,8 +11,9 @@ out() {
     printf '%b\n' "$@"
 }
 
-
-VMG_VERSION="0.2.26.225014"
+# 0.3.0.234414
+# 0.2.26.225014
+VMG_VERSION="0.3.0.234414" 
 
 # Import build configuration
 source build.targets
