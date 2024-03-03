@@ -98,6 +98,10 @@ for artifact in "${!artifacts[@]}"; do
     fi
 done
 
+
+
+mkdir -p build
+
 # Fetch Vanced microG
 chmod +x apkeep
 
@@ -116,9 +120,6 @@ out "${BLUE}CALL POPULATE PATCHES"
 
 
 out "${YELLOW}Building YouTube ReVanced APK"
-
-mkdir -p build
-
 
 function build_youtube_root() {
 if [ -f "com.google.android.youtube.apk" ]; then
