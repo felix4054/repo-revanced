@@ -61,11 +61,6 @@ artifacts["apkeep"]="EFForg/apkeep apkeep-x86_64-unknown-linux-gnu"
 
 
 get_artifact_download_url () {
-    # Usage: get_download_url <repo_name> <artifact_name> <file_type>
-    # local api_url="https://api.github.com/repos/$1/releases/latest"
-    # local result=$(curl $api_url | jq ".assets[] | select(.name | contains(\"$2\") and contains(\"$3\") and (contains(\".sig\") | not)) | .browser_download_url")
-    # echo ${result:1:-1}
-
     local api_url result
     api_url="https://api.github.com/repos/$1/releases/latest"
     result=$(curl -s $api_url | jq ".assets[] | select(.name | contains(\"$2\") and contains(\"$3\") and (contains(\".sig\") | not)) | .browser_download_url")
@@ -74,10 +69,6 @@ get_artifact_download_url () {
 
 # Function for populating patches array, using a function here reduces redundancy & satisfies DRY principals
 populate_patches() {
-    # Note: <<< defines a 'here-string'. Meaning, it allows reading from variables just like from a file
-    # while read -r patch; do
-    #     patches+=("$1 $patch")
-    # done <<< "$2"
     while read -r revanced_patches
     do
         patches+=("$1 $revanced_patches")
@@ -112,7 +103,7 @@ chmod +x apkeep
 
 
 if [ ! -f "vanced-microG.apk" ]; then
-    out "${YELLOW}Downloading Vanced microG"
+    out "${YELLOW}Downloading Vanced microG: @$VMG_VERSION"
     ./apkeep -a com.mgoogle.android.gms@$VMG_VERSION .
     mv com.mgoogle.android.gms@$VMG_VERSION.apk vanced-microG.apk
 fi
