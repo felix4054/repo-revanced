@@ -105,7 +105,7 @@ out "${BLUE}VANCED MICROG"
 if [  -f "vanced-microG.apk" ]; then
     out "${CYAN}Choosing Vanced microG: $VMG_VERSION"
     # ./apkeep -a com.mgoogle.android.gms@$VMG_VERSION .
-    mv vanced-microG.apk microG-$VMG_VERSION.apk
+    mv vanced-microG.apk build/microG-$VMG_VERSION.apk
 fi
 
 
