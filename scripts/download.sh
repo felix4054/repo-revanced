@@ -7,8 +7,8 @@ CYAN='\033[0;36m'
 NC='\033[0m'
 
 out() {
-	# print a message
-	printf '%b\n' "$@"
+   # print a message
+   printf '%b\n' "$@"
 }
 
 declare -A apks
