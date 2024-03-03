@@ -47,6 +47,6 @@ jobs:
           automatic_release_tag: "latest"
           prerelease: false
           # draft: true
-          title: "Release ${{ env.date_now }}"
+          title: "RVX-Vanced ${{ env.date_now }}"
           files: |
             build/*.apk
