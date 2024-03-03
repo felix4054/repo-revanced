@@ -102,9 +102,9 @@ done
 chmod +x apkeep
 
 out "${BLUE}VANCED MICROG"
-if [ ! -f "vanced-microG.apk" ]; then
+if [  -f "vanced-microG.apk" ]; then
     out "${YELLOW}Downloading Vanced microG: $VMG_VERSION"
-    ./apkeep -a com.mgoogle.android.gms@$VMG_VERSION .
+    # ./apkeep -a com.mgoogle.android.gms@$VMG_VERSION .
     mv vanced-microG.apk microG-$VMG_VERSION.apk
 fi
 
