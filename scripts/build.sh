@@ -56,7 +56,7 @@ artifacts["revanced-patches.jar"]="YT-Advanced/ReX-patches revanced-patches .jar
 # artifacts["revanced-cli.jar"]="revanced/revanced-cli revanced-cli .jar"
 # artifacts["revanced-patches.jar"]="revanced/revanced-patches revanced-patches .jar"
 fi
-# artifacts["vanced-microG.apk"]="inotia00/VancedMicroG microg .apk"
+artifacts["vanced-microG.apk"]="inotia00/VancedMicroG microg .apk"
 artifacts["apkeep"]="EFForg/apkeep apkeep-x86_64-unknown-linux-gnu"
 
 
@@ -103,9 +103,9 @@ chmod +x apkeep
 
 out "${BLUE}VANCED MICROG"
 if [ ! -f "vanced-microG.apk" ]; then
-    out "${YELLOW}Downloading Vanced microG: @$VMG_VERSION"
+    out "${YELLOW}Downloading Vanced microG: $VMG_VERSION"
     ./apkeep -a com.mgoogle.android.gms@$VMG_VERSION .
-    mv com.mgoogle.android.gms@$VMG_VERSION.apk microG-@$VMG_VERSION.apk
+    mv vanced-microG.apk microG-$VMG_VERSION.apk
 fi
 
 
