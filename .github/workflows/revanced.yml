@@ -44,7 +44,7 @@ jobs:
         name: Release ReVanced
         with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
-          automatic_release_tag: "latest"
+          automatic_release_tag: "v19.05.36"
           prerelease: false
           # draft: true
           title: "RVX-Vanced ${{ env.date_now }}"
